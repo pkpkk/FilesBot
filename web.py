@@ -1,4 +1,4 @@
-from flask import send_from_directory,Flask
+from flask import send_from_directory,Flask,url_for
 import os
 from app import FILE_PATH
 
@@ -11,7 +11,7 @@ web_app=Flask(__name__)
 def list_f():
   html=""
   for file in os.listdir(FILE_PATH):
-    html+=f'<a href="{HOST}/{file}"> {file} </a>'
+    html+=f'<a href="{url_for("sendf",file)}"> {file} </a>'
   return '<p>'+html+'</p>'
 
 @web_app.route('/<name>')
