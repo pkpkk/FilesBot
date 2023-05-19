@@ -1,9 +1,7 @@
-from threading import Thread
 from flask import send_from_directory,Flask
 import os
-from subprocess import Popen
+from app import FILE_PATH
 
-FILE_PATH=os.path.join(os.getcwd(),'files/')
 PORT=os.getenv('PORT')
 HOST=os.getenv('HOST') if os.getenv('HOST') else 'https://0.0.0.0'
 os.mkdir(FILE_PATH)
@@ -22,4 +20,4 @@ def sendf(name):
 
 
 if __name__=='__main__':
-  Popen(f'gunicorn 
+  web_app.run()
